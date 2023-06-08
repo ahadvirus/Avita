@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Avita.Infrastructure\Avita.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Avita.Identity\Avita.Identity.csproj" />
   </ItemGroup>
 
 </Project>

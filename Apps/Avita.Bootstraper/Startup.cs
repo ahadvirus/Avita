@@ -1,36 +1,32 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using Avita.Bootstraper.Infrastructure.Extensions;
+using Avita.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Avita.Bootstraper;
 
 public static class Startup
 {
-    public static void ConfigurationService(IServiceCollection services, IConfiguration configuration)
+    public static void ConfigurationService(IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
     {
 
-        //
+        services.AddInfrastructureService(environment: environment);
+        
         services.AddControllersWithViews()
-            .ConfigureApplicationPartManager(setupAction: manager =>
-                {
-                    Assembly[] assemblies = new Assembly[] { };
+            .ConfigureModules();
 
-                    IList<AssemblyPart> parts = assemblies.Select(assembly => new AssemblyPart(assembly)).ToList();
-
-                    foreach (AssemblyPart part in parts)
-                    {
-                        manager.ApplicationParts.Add(part);
-                    }
-
-                });
+        services.AddRouting(configureOptions: options =>
+        {
+            options.LowercaseUrls = true;
+            options.LowercaseQueryStrings = true;
+        });
     }
 
     public static void Configuration(WebApplication app)
     {
+        app.ApplyMigration();
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
@@ -38,6 +34,8 @@ public static class Startup
         app.UseRouting();
 
         app.UseAuthorization();
+
+        app.MapControllers();
 
         app.MapControllerRoute(
             name: "default",
