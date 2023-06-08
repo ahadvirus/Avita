@@ -1,11 +1,20 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Avita.Commons.Contracts;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Avita.Models;
 
-public static class Startup
+public class Startup : IStartup
 {
-    public static void ConfigurationService(IServiceCollection services, IConfiguration configuration)
+    public string Name
+    {
+        get
+        {
+            return nameof(Models);
+        }
+    }
+
+    public void ConfigurationService(IServiceCollection services, IConfiguration configuration)
     {
         
     }
