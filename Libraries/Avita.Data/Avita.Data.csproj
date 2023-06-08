@@ -26,4 +26,13 @@
     <ProjectReference Include="..\Avita.Models\Avita.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="datasettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="datasettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -3,23 +3,15 @@ using FluentNHibernate.Cfg.Db;
 
 namespace Avita.Data.Connections;
 
-public record SqlServer : IConnection<MsSqlConnectionStringBuilder>
+public record SqlServer() : IConnection<MsSqlConnectionStringBuilder>
 {
-    public SqlServer()
-    {
-        Server = string.Empty;
-        Database = string.Empty;
-        UserId = string.Empty;
-        Password = string.Empty;
-    }
+    public string Server { get; init; } = string.Empty;
 
-    public string Server { get; init; }
+    public string Database { get; init; } = string.Empty;
 
-    public string Database { get; init; }
+    public string UserId { get; init; } = string.Empty;
 
-    public string UserId { get; init; }
-
-    public string Password { get; init; }
+    public string Password { get; init; } = string.Empty;
 
     public string ConnectionString
     {

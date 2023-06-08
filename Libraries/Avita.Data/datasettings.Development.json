@@ -1,3 +1,16 @@
 {
-
+  "Connections": {
+    "MasterSqlServer": {
+      "Server": ".\\SQLEXPRESS",
+      "Database":"master",
+      "UserId": "sa",
+      "Password":"123@123.com"
+    },
+    "SqlServer": {
+      "Server": ".\\SQLEXPRESS",
+      "Database":"Avita",
+      "UserId": "sa",
+      "Password":"123@123.com"
+    }
+  }
 }
