@@ -6,4 +6,12 @@
     <!--<ImplicitUsings>enable</ImplicitUsings>-->
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Avita.Infrastructure\Avita.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

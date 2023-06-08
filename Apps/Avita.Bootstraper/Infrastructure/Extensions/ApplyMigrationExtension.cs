@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Avita.Identity.Infrastructure.Extensions;
+namespace Avita.Bootstraper.Infrastructure.Extensions;
 
 public static class ApplyMigrationExtension
 {
