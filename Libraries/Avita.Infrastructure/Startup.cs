@@ -1,6 +1,6 @@
 ﻿namespace Avita.Infrastructure;
 
-public class Startup
+public static class Startup
 {
 
 }
