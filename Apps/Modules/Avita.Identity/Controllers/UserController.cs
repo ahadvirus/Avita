@@ -9,10 +9,10 @@ using NHibernate.Linq;
 namespace Avita.Identity.Controllers;
 
 [ApiController]
-[Route(template: "[controller]")]
+[Route(template: nameof(Infrastructure.Configurations.Route.Api) + "/" + "[controller]")]
 public class UserController : ControllerBase
 {
-    protected ISessionFactory SessionFactory { get; }
+    private ISessionFactory SessionFactory { get; }
 
     public UserController(ISessionFactory sessionFactory)
     {
