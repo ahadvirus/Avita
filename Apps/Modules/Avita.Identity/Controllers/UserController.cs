@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Avita.Infrastructure.Extensions;
 using Avita.Models.Entities.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
@@ -8,9 +9,10 @@ using NHibernate.Linq;
 
 namespace Avita.Identity.Controllers;
 
-[ApiController]
+//[ApiController]
 [Route(template: nameof(Infrastructure.Configurations.Route.Api) + "/" + "[controller]")]
-public class UserController : ControllerBase
+[Route(template:"[controller]")]
+public class UserController : Controller
 {
     private ISessionFactory SessionFactory { get; }
 
@@ -20,7 +22,8 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> Get(CancellationToken cancellationToken)
+    [HttpGet(template:"[action]")]
+    public async Task<ActionResult<IEnumerable<User>>> Index(CancellationToken cancellationToken)
     {
         IEnumerable<User> result;
 
@@ -29,6 +32,6 @@ public class UserController : ControllerBase
             result = await session.Query<User>().ToListAsync(cancellationToken: cancellationToken);
         }
         
-        return Ok(value: result);
+        return Request.IsApi() ? Ok(value: result) : View(model: result);
     }
 }

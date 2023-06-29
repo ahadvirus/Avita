@@ -1,0 +1,6 @@
+﻿@model System.Collections.Generic.IEnumerable<Avita.Models.Entities.Identity.User>
+
+@foreach (Avita.Models.Entities.Identity.User user in Model)
+{
+    <h1>Welcome @Html.Raw(value: user.Username)</h1>
+}

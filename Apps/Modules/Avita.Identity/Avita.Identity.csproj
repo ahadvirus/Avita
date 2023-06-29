@@ -16,4 +16,9 @@
     <ProjectReference Include="..\..\..\Libraries\Avita.Infrastructure\Avita.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\User\Index.cshtml" />
+    <EmbeddedResource Include="Views\User\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
