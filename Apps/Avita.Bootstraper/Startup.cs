@@ -15,7 +15,9 @@ public static class Startup
         services.AddInfrastructureService(environment: environment);
         
         services.AddControllersWithViews()
-            .ConfigureModules();
+            .AddConfigureModules();
+
+        services.AddCompileModulesViews();
 
         services.AddRouting(configureOptions: options =>
         {
