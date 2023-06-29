@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using Avita.Commons.Contracts;
@@ -26,14 +25,15 @@ public static class AddInfrastructureServiceExtension
             );
         */
 
-        IEnumerable<Assembly> assemblies = Directory.GetFiles(path: AppDomain.CurrentDomain.BaseDirectory,
-                searchPattern: string.Format(format: "{0}*.dll", args: new object?[] { nameof(Avita) }))
-            .Select(selector: file => Assembly.Load(assemblyRef: AssemblyName.GetAssemblyName(assemblyFile: file)));
+        IEnumerable<Assembly> assemblies = Utilities.File.GetAllAssemblies(
+            address: AppDomain.CurrentDomain.BaseDirectory,
+            assemblyName: nameof(Avita)
+        );
 
         IEnumerable<Type> types = assemblies
-                .SelectMany(selector: assembly => assembly.GetTypes())
-                .Where(predicate: type =>
-                    type.IsClass && typeof(IStartup).IsAssignableFrom(type));
+            .SelectMany(selector: assembly => assembly.GetTypes())
+            .Where(predicate: type =>
+                type.IsClass && typeof(IStartup).IsAssignableFrom(type));
 
         foreach (Type type in types)
         {
@@ -54,7 +54,7 @@ public static class AddInfrastructureServiceExtension
                         path: string.Format(format: "{0}.json", args: new object?[] { environmentConfigurationName }),
                         optional: true
                     );
-                
+
                 startup.ConfigurationService(services: entry, configuration: configurationBuilder.Build());
             }
         }
