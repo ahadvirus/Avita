@@ -19,6 +19,14 @@
   <ItemGroup>
     <None Remove="Views\User\Index.cshtml" />
     <EmbeddedResource Include="Views\User\Index.cshtml" />
+    <None Remove="Views\Login\Index.cshtml" />
+    <EmbeddedResource Include="Views\Login\Index.cshtml" />
+    <None Remove="Views\Shared\_Layout.cshtml" />
+    <EmbeddedResource Include="Views\Shared\_Layout.cshtml" />
+    <None Remove="Views\_ViewImports.cshtml" />
+    <EmbeddedResource Include="Views\_ViewImports.cshtml" />
+    <None Remove="Views\_ViewStart.cshtml" />
+    <EmbeddedResource Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
 </Project>
