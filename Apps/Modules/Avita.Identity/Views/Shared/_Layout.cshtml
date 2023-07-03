@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>@ViewData[index: nameof(View.Title)]</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="@Html.Raw(value: "favicon.svg")" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="@Html.Raw(value: "favicon.png")" type="image/png">
+
+    <!-- Main Stylesheet -->
+    <!-- Based on your project, you might need to include the compiled CSS file if it is not automatically injected in your pages -->
+    <!-- <link rel="stylesheet" href="css/{main-stylesheet-name}.css"> -->
+
+    <!-- Inter web font from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js, uncomment if you would like to use Tailkit’s Alpine JS based components -->
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+</head>
+
+<body>
+<!--
+Add your main layout markup here and start copying over the components you want to design your UI
+-->
+@RenderBody()
+</body>
+
+</html>
